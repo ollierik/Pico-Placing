@@ -34,7 +34,7 @@ class Pico_Placing {
 				$placing_id++;
 			}
 
-			ksort($sorted_pages);
+			ksort($sorted_pages, SORT_STRING);
 			$pages = $sorted_pages;
 
 		}
