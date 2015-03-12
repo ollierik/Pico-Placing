@@ -24,7 +24,7 @@ class Pico_Placing {
 
 	public function get_pages(&$pages, &$current_page, &$prev_page, &$next_page) {
 		global $config;
-		if ($config['page_order_by'] = 'placing') {
+		if ($config['pages_order_by'] == 'placing') {
 
 			$sorted_pages = array();
 
