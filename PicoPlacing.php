@@ -119,14 +119,23 @@ final class PicoPlacing extends AbstractPicoPlugin
 
             $sorted_pages = array();
 
-            $placing_id = 0;
             foreach ($pages as $page) {
-                $sorted_pages[$page['placing'] . $placing_id] = $page;
-                $placing_id++;
+                $sorted_pages[$page['placing']] = $page;
             }
 
             ksort($sorted_pages);
             $pages = $sorted_pages;
+
+            $curr = $currentPage['placing'];
+
+            $keys = array_keys($sorted_pages);
+            $keyIndexes = array_flip( $keys );
+
+            $prev = ( isset( $keys[ $keyIndexes[ $curr ] - 1 ] ) ) ? $prev = $keys[ $keyIndexes[ $curr ] - 1 ] : FALSE;
+            $next = ( isset( $keys[ $keyIndexes[ $curr ] + 1 ] ) ) ? $next = $keys[ $keyIndexes[ $curr ] + 1 ] : FALSE;
+
+            $nextPage = ( $next ) ? $sorted_pages[$next] : null;
+            $previousPage = ( $prev ) ? $sorted_pages[$prev] : null;
 
         }
     }
